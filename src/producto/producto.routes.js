@@ -1,9 +1,18 @@
-const { Router } = require('express');
-const { check } = require('express-validator');
-const { validarCampos } = require('../middlewares/validar-campos');
-const { productoPost, productoGet, productoById, editProducto, deleteProducto } = require('../controllers/producto.controller');
+import { Router } from 'express';
+import { check } from 'express-validator';
+import { 
+    productoPost, 
+    productoGet, 
+    productoById, 
+    editProducto, 
+    deleteProducto } from './producto.controller.js';
+import { validarCampos } from '../middlewares/validar-campos.js';
 
 const router = Router();
+
+router.get("/", productoGet);
+
+router.get("/:id", productoById);
 
 router.post(
     "/",
@@ -16,10 +25,6 @@ router.post(
     ],
     productoPost
 );
-
-router.get("/", productoGet);
-
-router.get("/:id", productoById);
 
 router.put(
     "/:id",
@@ -35,4 +40,4 @@ router.put(
 
 router.delete("/:id", deleteProducto);
 
-module.exports = router;
+export default router;

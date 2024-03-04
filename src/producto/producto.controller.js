@@ -1,8 +1,8 @@
-const bcryptjs = require('bcryptjs')
-const Producto = require('../models/producto');
-const { response } = require('express');
+import bcryptjs from 'bcryptjs';
+import Producto from './producto.model.js';
+import { response } from 'express';
 
-const productoPost = async (req, res) => {
+export const productoPost = async (req, res) => {
     const { nombre, descripcion, precio, cantidad } = req.body;
     const producto = new Producto({ nombre, descripcion, precio, cantidad });
     
@@ -15,7 +15,7 @@ const productoPost = async (req, res) => {
     });
 };
 
-const productoGet = async (req, res = response) => {
+export const productoGet = async (req, res = response) => {
     const {limite, desde} = req.query;
     const query = {estado: true};
 
@@ -32,7 +32,7 @@ const productoGet = async (req, res = response) => {
     });
 };
 
-const productoById = async (req, res) => {
+export const productoById = async (req, res) => {
     const { id } = req.params;
     const producto = await Producto.findById({_id: id});
 
@@ -41,7 +41,7 @@ const productoById = async (req, res) => {
     });
 };
 
-const editProducto = async (req, res = response) => {
+export const editProducto = async (req, res = response) => {
     const { id } = req.params;
     const { descripcion, precio, cantidad, ...resto } = req.body;
 
@@ -61,7 +61,7 @@ const editProducto = async (req, res = response) => {
     }
 };
 
-const deleteProducto = async (req, res = response) => {
+export const deleteProducto = async (req, res = response) => {
     const { id } = req.params;
     const producto = await Producto.findByIdAndDelete(id);
     
@@ -70,12 +70,4 @@ const deleteProducto = async (req, res = response) => {
         producto
     });
 
-};
-
-module.exports = {
-    productoPost,
-    productoGet,
-    productoById,
-    editProducto,
-    deleteProducto
 };
