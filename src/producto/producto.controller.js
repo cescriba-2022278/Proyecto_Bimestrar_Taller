@@ -1,13 +1,10 @@
 import bcryptjs from 'bcryptjs';
 import Producto from './producto.model.js';
-import { response } from 'express';
+import { request, response } from 'express';
 
 export const productoPost = async (req, res) => {
-    const { nombre, descripcion, precio, cantidad } = req.body;
-    const producto = new Producto({ nombre, descripcion, precio, cantidad });
-    
-    const salt = bcryptjs.genSaltSync();
-    producto.preio = bcryptjs.hashSync(precio, salt);
+    const { nombre, descripcion, precio, cantidad, categoria} = req.body;
+    const producto = new Producto({ nombre, descripcion, precio, cantidad, categoria});
 
     await producto.save();
     res.status(202).json({ 
@@ -15,21 +12,26 @@ export const productoPost = async (req, res) => {
     });
 };
 
-export const productoGet = async (req, res = response) => {
-    const {limite, desde} = req.query;
-    const query = {estado: true};
-
-    const [total, productos] = await Promise.all([
-        Producto.countDocuments(query),
-        Producto.find(query)
-        .skip(Number(desde))
-        .limit(Number(limite))
-    ]);
-
-    res.status(200).json({
-        total,
-        productos
-    });
+export const productoGet = async (req = request, res = response) => {
+    try {
+        const { limite, desde, categoria } = req.query;
+        let query = {};
+    
+        if (categoria) {
+            query.categoria = categoria;
+        }
+    
+        const productos = await Producto.find(query)
+            .skip(Number(desde)) 
+            .limit(Number(limite)) 
+    
+        res.status(200).json({
+            total: productos.length, 
+            productos
+        });
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al obtener las empresas', error: error.message });
+    }
 };
 
 export const productoById = async (req, res) => {

@@ -1,78 +1,83 @@
 {
     "client": "Thunder Client",
     "collectionName": "productoColeccion",
-    "dateExported": "2024-02-17T07:46:30.582Z",
+    "dateExported": "2024-03-04T23:10:25.187Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "6c8c2b70-d06e-4de0-9102-494577e7ac8c",
-            "colId": "6ac684ed-3d50-4800-bffd-d08811c074ac",
+            "_id": "a3227082-df54-46e8-a765-7efe3bdea2ad",
+            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
-            "name": "productoPost",
-            "url": "http://localhost:3000/api/productos",
+            "name": "Agregar Producto",
+            "url": "http://localhost:3000/gestion/v1/productos",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-02-17T07:24:00.731Z",
-            "modified": "2024-02-17T07:38:28.433Z",
+            "created": "2024-03-04T20:32:34.675Z",
+            "modified": "2024-03-04T23:03:49.063Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Producto de ejemplo30\",\n  \"descripcion\": \"Este es un producto de ejemplo30\",\n  \"precio\": \"10.99\",\n  \"cantidad\": \"100\"\n}",
+                "raw": "{\n  \"nombre\": \"Caramelo\",\n  \"descripcion\": \"muy dulce para ti?\",\n  \"precio\": \"1.99\",\n  \"cantidad\": \"872\",\n  \"categoria\": \"Dulces, bollería y snacks\"\n}\n",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "eb561642-6fb3-4b05-87a4-8cee0ddc86ac",
-            "colId": "6ac684ed-3d50-4800-bffd-d08811c074ac",
+            "_id": "00777034-b875-454f-b5d5-04139f151f8f",
+            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
-            "name": "productoGet",
-            "url": "http://localhost:3000/api/productos?limite=5&desde=5",
+            "name": "Buscar Producto",
+            "url": "http://localhost:3000/gestion/v1/productos?categoria=Lacteos",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-02-17T07:32:28.238Z",
-            "modified": "2024-02-17T07:33:42.062Z",
+            "created": "2024-03-04T20:32:34.677Z",
+            "modified": "2024-03-04T23:04:54.590Z",
             "headers": [],
             "params": [
                 {
-                    "name": "limite",
-                    "value": "5",
+                    "name": "categoria",
+                    "value": "Frutas",
+                    "isDisabled": true,
                     "isPath": false
                 },
                 {
-                    "name": "desde",
-                    "value": "5",
+                    "name": "categoria",
+                    "value": "Lacteos",
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Carbohidratos",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Carnes",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Dulces, bollería y snacks",
+                    "isDisabled": true,
                     "isPath": false
                 }
             ],
             "tests": []
         },
         {
-            "_id": "fcce0e27-47ea-4803-a4f0-730174f12de1",
-            "colId": "6ac684ed-3d50-4800-bffd-d08811c074ac",
-            "containerId": "",
-            "name": "get productoById",
-            "url": "http://localhost:3000/api/productos/65d062410e12417000214511",
-            "method": "GET",
-            "sortNum": 30000,
-            "created": "2024-02-17T07:39:26.809Z",
-            "modified": "2024-02-17T07:39:48.578Z",
-            "headers": [],
-            "params": [],
-            "tests": []
-        },
-        {
-            "_id": "3270a8a4-4bf7-4295-ba3b-66c8e0ede056",
-            "colId": "6ac684ed-3d50-4800-bffd-d08811c074ac",
+            "_id": "8a98e09e-191a-449c-9a30-3361730012f5",
+            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
             "name": "put producto",
             "url": "http://localhost:3000/api/productos/65d062340e1241700021450d",
             "method": "PUT",
             "sortNum": 40000,
-            "created": "2024-02-17T07:40:01.532Z",
-            "modified": "2024-02-17T07:44:52.907Z",
+            "created": "2024-03-04T20:32:34.679Z",
+            "modified": "2024-03-04T20:32:34.679Z",
             "headers": [],
             "params": [],
             "body": {
@@ -83,15 +88,15 @@
             "tests": []
         },
         {
-            "_id": "8a08772e-e676-4ad0-80f7-53c55b3eb906",
-            "colId": "6ac684ed-3d50-4800-bffd-d08811c074ac",
+            "_id": "4e72a464-5994-4540-b851-93db0508f9d0",
+            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
             "name": "delete producto",
             "url": "http://localhost:3000/api/productos/65d0604b3dffe1932ea01566",
             "method": "DELETE",
             "sortNum": 50000,
-            "created": "2024-02-17T07:45:35.994Z",
-            "modified": "2024-02-17T07:46:08.639Z",
+            "created": "2024-03-04T20:32:34.680Z",
+            "modified": "2024-03-04T20:32:34.680Z",
             "headers": [],
             "params": [],
             "tests": []

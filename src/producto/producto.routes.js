@@ -21,6 +21,7 @@ router.post(
         check("descripcion", "La descripción no puede estar vacía").not().isEmpty(),
         check("precio", "El precio debe ser un número válido").isNumeric(),
         check("cantidad", "La cantidad debe ser un número válido").isNumeric(),
+        check("categoria", "categoria del producto necesaria").not().isEmpty(),
         validarCampos
     ],
     productoPost

@@ -17,6 +17,10 @@ const ProductoSchema = Schema({
         type: String,
         required: true
     },
+    categoria: {
+        type: String,
+        require: true
+    },
     estado:{
         type: Boolean,
         default: true
