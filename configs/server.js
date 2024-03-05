@@ -6,12 +6,14 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import productoRoutes from '../src/producto/producto.routes.js';
+import usuarioRoutes from '../src/usuario/usuario.routes.js';
 
 class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
         this.productoPath = '/gestion/v1/productos';
+        this.usuarioPath = '/gestion/v2/usuarios';
 
 
         this.middlewares();
@@ -33,6 +35,7 @@ class Server{
 
     routes(){
         this.app.use(this.productoPath, productoRoutes);
+        this.app.use(this.usuarioPath, usuarioRoutes)
     }
 
     listen(){

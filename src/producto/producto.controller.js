@@ -1,4 +1,3 @@
-import bcryptjs from 'bcryptjs';
 import Producto from './producto.model.js';
 import { request, response } from 'express';
 
