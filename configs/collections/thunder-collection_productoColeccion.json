@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "productoColeccion",
-    "dateExported": "2024-03-04T23:10:25.187Z",
+    "dateExported": "2024-03-06T22:32:11.816Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -29,11 +29,11 @@
             "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
             "name": "Buscar Producto",
-            "url": "http://localhost:3000/gestion/v1/productos?categoria=Lacteos",
+            "url": "http://localhost:3000/gestion/v1/productos?categoria=Carnes",
             "method": "GET",
             "sortNum": 20000,
             "created": "2024-03-04T20:32:34.677Z",
-            "modified": "2024-03-04T23:04:54.590Z",
+            "modified": "2024-03-06T22:30:52.115Z",
             "headers": [],
             "params": [
                 {
@@ -45,6 +45,7 @@
                 {
                     "name": "categoria",
                     "value": "Lacteos",
+                    "isDisabled": true,
                     "isPath": false
                 },
                 {
@@ -56,7 +57,6 @@
                 {
                     "name": "categoria",
                     "value": "Carnes",
-                    "isDisabled": true,
                     "isPath": false
                 },
                 {
@@ -66,6 +66,7 @@
                     "isPath": false
                 }
             ],
+            "reqType": "get",
             "tests": []
         },
         {
@@ -73,18 +74,19 @@
             "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
             "name": "put producto",
-            "url": "http://localhost:3000/api/productos/65d062340e1241700021450d",
+            "url": "http://localhost:3000/gestion/v1/productos/65e64d0ae3e6f3a179c562b0",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2024-03-04T20:32:34.679Z",
-            "modified": "2024-03-04T20:32:34.679Z",
+            "modified": "2024-03-06T22:26:28.880Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n  \"descripcion\": \"Nueva descripción del producto\",\r\n  \"precio\": 19.99,\r\n  \"cantidad\": 50\r\n}",
+                "raw": "{\n  \"descripcion\": \"Manzanas podridas\",\n  \"precio\": 99999.99,\n  \"cantidad\": 21\n}",
                 "form": []
             },
+            "reqType": "put",
             "tests": []
         },
         {
@@ -92,13 +94,14 @@
             "colId": "beff357d-4025-4d61-a99c-a40f30611353",
             "containerId": "",
             "name": "delete producto",
-            "url": "http://localhost:3000/api/productos/65d0604b3dffe1932ea01566",
+            "url": "http://localhost:3000/gestion/v1/productos/65e64c46e3e6f3a179c562ac",
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2024-03-04T20:32:34.680Z",
-            "modified": "2024-03-04T20:32:34.680Z",
+            "modified": "2024-03-06T22:28:17.101Z",
             "headers": [],
             "params": [],
+            "reqType": "del",
             "tests": []
         }
     ]
