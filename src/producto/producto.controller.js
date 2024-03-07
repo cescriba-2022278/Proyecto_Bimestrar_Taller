@@ -1,39 +1,53 @@
 import Producto from './producto.model.js';
+import Categoria from '../categoria/categoria.model.js';
 import { request, response } from 'express';
 
-export const productoPost = async (req, res) => {
-    const { nombre, descripcion, precio, cantidad, categoria} = req.body;
-    const producto = new Producto({ nombre, descripcion, precio, cantidad, categoria});
+export const agregarProducto = async (req, res) => {
+    try {
+        const { nombre, descripcion, precio, cantidad, categoria } = req.body;
+        const categoriaEncontrada = await Categoria.findOne({ nombre: categoria });
+        if (!categoriaEncontrada) {
+            return res.status(400).json({ error: 'La categoría especificada no existe' });
+        }
 
-    await producto.save();
-    res.status(202).json({ 
-        producto 
-    });
+        const producto = new Producto({ nombre, descripcion, precio, cantidad, categoria: categoriaEncontrada._id });
+        await producto.save();
+
+        res.status(201).json({ producto });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };
 
 export const productoGet = async (req = request, res = response) => {
     try {
-        const { limite, desde, categoria } = req.query;
+        const { categoria } = req.query;
         let query = {};
-    
+
+        // Verifica si se proporcionó el nombre de la categoría
         if (categoria) {
-            query.categoria = categoria;
+            // Busca la categoría por su nombre
+            const categoriaEncontrada = await Categoria.findOne({ nombre: categoria });
+
+            // Si no se encuentra la categoría, devuelve un mensaje de error
+            if (!categoriaEncontrada) {
+                return res.status(404).json({ error: 'Categoría no encontrada' });
+            }
+
+            // Filtra los productos por el ObjectId de la categoría encontrada
+            query.categoria = categoriaEncontrada._id;
         }
-    
-        const productos = await Producto.find(query)
-            .skip(Number(desde)) 
-            .limit(Number(limite)) 
-    
-        res.status(200).json({
-            total: productos.length, 
-            productos
-        });
+
+        // Busca los productos según la consulta y popula la referencia a la categoría
+        const productos = await Producto.find(query).populate('categoria');
+
+        res.json({ productos });
     } catch (error) {
-        res.status(500).json({ mensaje: 'Error al obtener las empresas', error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
-export const productoById = async (req, res) => {
+export const productoById = async (req = request, res = response) => {
     const { id } = req.params;
     const producto = await Producto.findById({_id: id});
 
@@ -42,27 +56,21 @@ export const productoById = async (req, res) => {
     });
 };
 
-export const editProducto = async (req, res = response) => {
-    const { id } = req.params;
-    const { descripcion, precio, cantidad, ...resto } = req.body;
-
+export const actualizarProducto = async (req, res) => {
     try {
-        const productoActualizado = await Producto.findByIdAndUpdate(id, { descripcion, precio, cantidad, ...resto }, { new: true });
-
-        if (!productoActualizado) {
-            return res.status(404).json({ message: 'Producto no encontrado' });
+        const { id } = req.params;
+        const { nombre, descripcion, precio, cantidad, categoria } = req.body;
+        const producto = await Producto.findByIdAndUpdate(id, { nombre, descripcion, precio, cantidad, categoria }, { new: true });
+        if (!producto) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
         }
-
-        res.status(200).json({ 
-            msg: 'Producto actualizado exitosamente',
-            producto: productoActualizado 
-        });
+        res.json({ mensaje: 'Producto actualizado correctamente', producto });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
 
-export const deleteProducto = async (req, res = response) => {
+export const deleteProducto = async (req = request, res = response) => {
     const { id } = req.params;
     const producto = await Producto.findByIdAndDelete(id);
     
@@ -71,4 +79,51 @@ export const deleteProducto = async (req, res = response) => {
         producto
     });
 
+};
+
+export const obtenerProductosPorCategoria = async (req, res) => {
+    try {
+        const { nombreCategoria } = req.params;
+
+        // Busca la categoría por su nombre
+        const categoria = await Categoria.findOne({ nombre: nombreCategoria });
+        if (!categoria) {
+            return res.status(404).json({ error: 'Categoría no encontrada' });
+        }
+
+        // Busca los productos asociados a la categoría por su ObjectId
+        const productos = await Producto.find({ categoria: categoria._id });
+
+        res.json({ productos });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const venderProducto = async (req = request, res = response) => {
+    try {
+        const ventaCantidad = req.body.cantidad;
+        const producto = await Producto.findById(req.params.id);
+        if (!producto) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+        if (producto.cantidadDisponible < ventaCantidad) {
+            return res.status(400).json({ error: 'Cantidad insuficiente en inventario' });
+        }
+        producto.cantidadDisponible -= ventaCantidad;
+        producto.ventas += ventaCantidad;
+        await producto.save();
+        res.json(producto);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+export const obtenerProductosMasVendidos = async (res = response) => {
+    try {
+        const productos = await Producto.find().sort({ ventas: -1 }).limit(10);
+        res.json(productos);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 };

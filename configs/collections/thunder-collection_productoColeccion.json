@@ -1,84 +1,39 @@
 {
     "client": "Thunder Client",
     "collectionName": "productoColeccion",
-    "dateExported": "2024-03-06T22:32:11.816Z",
+    "dateExported": "2024-03-07T05:19:48.192Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "a3227082-df54-46e8-a765-7efe3bdea2ad",
-            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
+            "_id": "c3e9d816-ae71-4da9-b712-d1321884d060",
+            "colId": "0019c49c-2810-4c45-8e3e-bb32877a7678",
             "containerId": "",
             "name": "Agregar Producto",
             "url": "http://localhost:3000/gestion/v1/productos",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-03-04T20:32:34.675Z",
-            "modified": "2024-03-04T23:03:49.063Z",
+            "created": "2024-03-07T03:04:23.026Z",
+            "modified": "2024-03-07T05:09:37.787Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Caramelo\",\n  \"descripcion\": \"muy dulce para ti?\",\n  \"precio\": \"1.99\",\n  \"cantidad\": \"872\",\n  \"categoria\": \"Dulces, bollería y snacks\"\n}\n",
+                "raw": "{\n  \"nombre\": \"Queso Mozarela\",\n  \"descripcion\": \"Derretido\",\n  \"precio\": \"21.99\",\n  \"cantidad\": \"73\",\n  \"categoria\": \"Lacteos y Pescados\"\n}\n",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "00777034-b875-454f-b5d5-04139f151f8f",
-            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
-            "containerId": "",
-            "name": "Buscar Producto",
-            "url": "http://localhost:3000/gestion/v1/productos?categoria=Carnes",
-            "method": "GET",
-            "sortNum": 20000,
-            "created": "2024-03-04T20:32:34.677Z",
-            "modified": "2024-03-06T22:30:52.115Z",
-            "headers": [],
-            "params": [
-                {
-                    "name": "categoria",
-                    "value": "Frutas",
-                    "isDisabled": true,
-                    "isPath": false
-                },
-                {
-                    "name": "categoria",
-                    "value": "Lacteos",
-                    "isDisabled": true,
-                    "isPath": false
-                },
-                {
-                    "name": "categoria",
-                    "value": "Carbohidratos",
-                    "isDisabled": true,
-                    "isPath": false
-                },
-                {
-                    "name": "categoria",
-                    "value": "Carnes",
-                    "isPath": false
-                },
-                {
-                    "name": "categoria",
-                    "value": "Dulces, bollería y snacks",
-                    "isDisabled": true,
-                    "isPath": false
-                }
-            ],
-            "reqType": "get",
-            "tests": []
-        },
-        {
-            "_id": "8a98e09e-191a-449c-9a30-3361730012f5",
-            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
+            "_id": "098d4c89-f6cf-4385-8efb-adaaba742bd3",
+            "colId": "0019c49c-2810-4c45-8e3e-bb32877a7678",
             "containerId": "",
             "name": "put producto",
-            "url": "http://localhost:3000/gestion/v1/productos/65e64d0ae3e6f3a179c562b0",
+            "url": "http://localhost:3000/gestion/v1/productos/65e937715493d3a6b4227da7",
             "method": "PUT",
-            "sortNum": 40000,
-            "created": "2024-03-04T20:32:34.679Z",
-            "modified": "2024-03-06T22:26:28.880Z",
+            "sortNum": 12500,
+            "created": "2024-03-07T03:04:23.029Z",
+            "modified": "2024-03-07T04:06:42.388Z",
             "headers": [],
             "params": [],
             "body": {
@@ -86,22 +41,20 @@
                 "raw": "{\n  \"descripcion\": \"Manzanas podridas\",\n  \"precio\": 99999.99,\n  \"cantidad\": 21\n}",
                 "form": []
             },
-            "reqType": "put",
             "tests": []
         },
         {
-            "_id": "4e72a464-5994-4540-b851-93db0508f9d0",
-            "colId": "beff357d-4025-4d61-a99c-a40f30611353",
+            "_id": "b3779ba6-4e99-4e5b-b32e-a3d2600f436c",
+            "colId": "0019c49c-2810-4c45-8e3e-bb32877a7678",
             "containerId": "",
             "name": "delete producto",
-            "url": "http://localhost:3000/gestion/v1/productos/65e64c46e3e6f3a179c562ac",
+            "url": "http://localhost:3000/gestion/v1/productos/65e938205493d3a6b4227da9",
             "method": "DELETE",
             "sortNum": 50000,
-            "created": "2024-03-04T20:32:34.680Z",
-            "modified": "2024-03-06T22:28:17.101Z",
+            "created": "2024-03-07T03:04:23.030Z",
+            "modified": "2024-03-07T04:07:11.072Z",
             "headers": [],
             "params": [],
-            "reqType": "del",
             "tests": []
         }
     ]

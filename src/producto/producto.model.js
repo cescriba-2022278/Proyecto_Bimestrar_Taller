@@ -10,16 +10,16 @@ const ProductoSchema = Schema({
         required: true
     },
     precio:{
-        type: String,
+        type: Number,
         required: true
     },
     cantidad:{
-        type: String,
+        type: Number,
         required: true
     },
     categoria: {
-        type: String,
-        require: true
+        type: Schema.Types.ObjectId,
+        ref: 'Categoria'
     },
     estado:{
         type: Boolean,

@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 import { 
-    productoPost, 
+    agregarProducto, 
     productoGet, 
     productoById, 
-    editProducto, 
-    deleteProducto } from './producto.controller.js';
+    actualizarProducto, 
+    deleteProducto,
+    obtenerProductosPorCategoria } from './producto.controller.js';
 import { validarCampos } from '../middlewares/validar-campos.js';
 
 const router = Router();
@@ -24,7 +25,7 @@ router.post(
         check("categoria", "categoria del producto necesaria").not().isEmpty(),
         validarCampos
     ],
-    productoPost
+    agregarProducto
 );
 
 router.put(
@@ -36,9 +37,11 @@ router.put(
         check("cantidad", "La cantidad debe ser un número válido").isNumeric(),
         validarCampos
     ],
-    editProducto
+    actualizarProducto
 );
 
 router.delete("/:id", deleteProducto);
+
+router.get('/productos/categoria/:nombreCategoria', obtenerProductosPorCategoria);
 
 export default router;

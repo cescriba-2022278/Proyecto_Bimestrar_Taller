@@ -8,6 +8,7 @@ import { dbConnection } from './mongo.js';
 import productoRoutes from '../src/producto/producto.routes.js';
 import usuarioRoutes from '../src/usuario/usuario.routes.js';
 import loginRoutes from '../src/login/login.routes.js';
+import categoriaRoutes from '../src/categoria/categoria.routes.js';
 
 class Server{
     constructor(){
@@ -16,6 +17,7 @@ class Server{
         this.productoPath = '/gestion/v1/productos';
         this.usuarioPath = '/gestion/v2/usuarios';
         this.loginPath = '/gestion/v3/login';
+        this.categoriaPath = '/gestion/v4/categorias';
 
 
         this.middlewares();
@@ -39,6 +41,7 @@ class Server{
         this.app.use(this.productoPath, productoRoutes);
         this.app.use(this.usuarioPath, usuarioRoutes);
         this.app.use(this.loginPath, loginRoutes);
+        this.app.use(this.categoriaPath, categoriaRoutes);
     }
 
     listen(){

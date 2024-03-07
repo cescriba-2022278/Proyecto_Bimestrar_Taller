@@ -1,0 +1,72 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "categoriaCollection",
+    "dateExported": "2024-03-07T05:19:57.502Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2ee99e99-4463-4acd-b777-2824276f7463",
+            "colId": "0e04820d-7ae9-49cc-b8a0-a75a648ad1ee",
+            "containerId": "",
+            "name": "agregar Categoria",
+            "url": "http://localhost:3000/gestion/v4/categorias",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-07T04:21:00.850Z",
+            "modified": "2024-03-07T04:38:06.782Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Lacteos y Pescados\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9406ba97-581d-45ab-9b6c-85740e67a324",
+            "colId": "0e04820d-7ae9-49cc-b8a0-a75a648ad1ee",
+            "containerId": "",
+            "name": "Visualizar Catalogo",
+            "url": "http://localhost:3000/gestion/v1/productos?categoria=Dulces, bollería y snacks",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-07T04:47:38.328Z",
+            "modified": "2024-03-07T04:47:38.328Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "Lacteos y Pescados",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Carbohidratos",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Frutas y hortalizas",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Carnes",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "categoria",
+                    "value": "Dulces, bollería y snacks",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
