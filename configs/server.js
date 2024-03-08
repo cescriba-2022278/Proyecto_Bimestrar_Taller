@@ -9,6 +9,7 @@ import productoRoutes from '../src/producto/producto.routes.js';
 import usuarioRoutes from '../src/usuario/usuario.routes.js';
 import loginRoutes from '../src/login/login.routes.js';
 import categoriaRoutes from '../src/categoria/categoria.routes.js';
+import facturaRoutes from '../src/factura/factura.routes.js';
 
 class Server{
     constructor(){
@@ -18,6 +19,7 @@ class Server{
         this.usuarioPath = '/gestion/v2/usuarios';
         this.loginPath = '/gestion/v3/login';
         this.categoriaPath = '/gestion/v4/categorias';
+        this.facturaPath = '/gestion/v5/facturas';
 
 
         this.middlewares();
@@ -42,6 +44,7 @@ class Server{
         this.app.use(this.usuarioPath, usuarioRoutes);
         this.app.use(this.loginPath, loginRoutes);
         this.app.use(this.categoriaPath, categoriaRoutes);
+        this.app.use(this.facturaPath, facturaRoutes);
     }
 
     listen(){

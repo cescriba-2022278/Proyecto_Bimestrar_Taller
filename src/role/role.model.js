@@ -4,7 +4,6 @@ const RoleSchema = Schema({
     role: {
         type: String,
         required: [true, 'El nombre del rol es obligatorio'],
-        unique: true
     },
     descripcion: {
         type: String

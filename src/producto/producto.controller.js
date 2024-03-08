@@ -77,13 +77,11 @@ export const obtenerProductosPorCategoria = async (req, res) => {
     try {
         const { nombreCategoria } = req.params;
 
-        // Busca la categoría por su nombre
         const categoria = await Categoria.findOne({ nombre: nombreCategoria });
         if (!categoria) {
             return res.status(404).json({ error: 'Categoría no encontrada' });
         }
 
-        // Busca los productos asociados a la categoría por su ObjectId
         const productos = await Producto.find({ categoria: categoria._id });
 
         res.json({ productos });
