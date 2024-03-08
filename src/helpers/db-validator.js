@@ -11,9 +11,9 @@ export const existenteProductoById = async (id = '') => {
 }
 
 export const esRoleValido = async (role = '') => {
-    const existeRol = await Role.findOne({ role });
+    const existeRole = await Role.findOne({ role });
 
-    if (!existeRol) {
+    if (!existeRole) {
         throw new Error(`El role ${role} no existe en la base de datos`);
     }
 }

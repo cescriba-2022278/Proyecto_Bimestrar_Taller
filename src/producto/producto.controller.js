@@ -23,22 +23,14 @@ export const productoGet = async (req = request, res = response) => {
     try {
         const { categoria } = req.query;
         let query = {};
-
-        // Verifica si se proporcionó el nombre de la categoría
         if (categoria) {
-            // Busca la categoría por su nombre
             const categoriaEncontrada = await Categoria.findOne({ nombre: categoria });
 
-            // Si no se encuentra la categoría, devuelve un mensaje de error
             if (!categoriaEncontrada) {
                 return res.status(404).json({ error: 'Categoría no encontrada' });
             }
-
-            // Filtra los productos por el ObjectId de la categoría encontrada
             query.categoria = categoriaEncontrada._id;
         }
-
-        // Busca los productos según la consulta y popula la referencia a la categoría
         const productos = await Producto.find(query).populate('categoria');
 
         res.json({ productos });

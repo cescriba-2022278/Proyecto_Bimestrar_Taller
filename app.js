@@ -1,4 +1,3 @@
-import rolesPredefinidos from './src/role/rolePredefinido.js';
 import Role from './src/role/role.model.js';
 
 import { config } from "dotenv";
@@ -9,20 +8,24 @@ const server = new Server();
 
 server.listen();
 
-export const inicializarRoles = async () => {
-    try {
-        // Recorre la lista de roles predefinidos
-        for (const rol of rolesPredefinidos) {
-            // Verifica si el rol ya existe en la base de datos
-            const rolExistente = await Role.findOne({ nombre: rol.nombre });
+export const rolesPredefinidos = [
+    { role: 'ADMIN_ROLE', descripcion: 'Administrador' },
+    { role: 'CLIENT_ROLE', descripcion: 'Cliente' }
+];
 
-            // Si el rol no existe, créalo automáticamente
-            if (!rolExistente) {
-                await Role.create(rol);
+const inicializarRoles = async () => {
+    try {
+        for (const role of rolesPredefinidos) {
+            const roleExistente = await Role.findOne({ role: role._id });
+
+            if (!roleExistente) {
+                await Role.create(role);
+                console.log(`Role '${role}' creado automáticamente.`);
             }
         }
-        console.log('Roles inicializados correctamente');
     } catch (error) {
         console.error('Error al inicializar roles:', error);
     }
 };
+
+inicializarRoles();

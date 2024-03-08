@@ -63,11 +63,27 @@ export const actualizarUsuario = async (req, res = response) => {
 }
 
 export const eliminarUsuario = async (req, res) => {
-    const { id } = req.params;
+    try {
+        const { id } = req.params;
+        const usuarioAEliminar = await Usuario.findById(id);
 
-    const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+        if (!usuarioAEliminar) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
 
-    const authenticatedUser = req.usuario;
+        if (req.usuario.role !== 'ADMIN_ROLE') {
+            return res.status(403).json({ mensaje: 'No tienes permiso para realizar esta acción' });
+        }
 
-    res.status(200).json({ msg: 'Usuario desactivado', usuario, authenticatedUser });
-}
+        if (usuarioAEliminar.role !== 'CLIENT_ROLE') {
+            return res.status(403).json({ mensaje: 'Solo se pueden eliminar usuarios con rol CLIENT_ROLE' });
+        }
+
+        // Elimina el usuario
+        await Usuario.findByIdAndDelete(id);
+
+        res.status(200).json({ mensaje: 'Usuario eliminado correctamente' });
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al eliminar usuario', error: error.message });
+    }
+};

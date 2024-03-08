@@ -1,39 +1,59 @@
 {
     "client": "Thunder Client",
     "collectionName": "Gestion de Usuario",
-    "dateExported": "2024-03-05T22:46:10.899Z",
+    "dateExported": "2024-03-08T03:40:14.190Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "964696c8-753d-41d1-9f42-21966638be68",
-            "colId": "43decd80-cc83-49e8-91ec-73947531f76e",
+            "_id": "2eb9167d-aaf2-4fef-b9fb-4ada961441f0",
+            "colId": "90381da4-41f5-4694-a9b3-9d20f208e15a",
             "containerId": "",
             "name": "registrar",
             "url": "http://localhost:3000/gestion/v2/usuarios",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-03-05T21:31:59.659Z",
-            "modified": "2024-03-05T21:57:36.501Z",
+            "created": "2024-03-07T05:30:12.981Z",
+            "modified": "2024-03-08T03:32:28.548Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\": \"Omar Queti\",\n  \"correo\": \"oqueti@gmail.comn\",\n  \"password\": \"123456\",\n  \"role\": \"CLIENT_ROLE\"\n}",
+                "raw": "{\n  \"nombre\": \"test 1\",\n  \"correo\": \"test1@gmail.com\",\n  \"password\": \"123456\",\n  \"role\": \"CLIENT_ROLE\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "bde7cd9e-b5fd-4c96-a086-4e51e5a92128",
+            "colId": "90381da4-41f5-4694-a9b3-9d20f208e15a",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/gestion/v3/login/login",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2024-03-08T03:28:13.980Z",
+            "modified": "2024-03-08T03:33:01.088Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"cescriba@gmail.com\",\n  \"password\": \"123456\"\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "f0025793-df0d-4b55-bdfe-2d54be5f70db",
-            "colId": "43decd80-cc83-49e8-91ec-73947531f76e",
+            "_id": "c945a14c-b778-48c2-8b59-a3d7912bac3f",
+            "colId": "90381da4-41f5-4694-a9b3-9d20f208e15a",
             "containerId": "",
             "name": "actualizar Role",
-            "url": "http://localhost:3000/gestion/v2/usuarios/65e7950c1ab83c5940f7142d",
+            "url": "http://localhost:3000/gestion/v2/usuarios/65ea82edfd14e855f2471f2a",
             "method": "PUT",
             "sortNum": 20000,
-            "created": "2024-03-05T22:02:07.678Z",
-            "modified": "2024-03-05T22:02:42.170Z",
+            "created": "2024-03-07T05:30:12.982Z",
+            "modified": "2024-03-08T03:17:31.137Z",
             "headers": [],
             "params": [],
             "body": {
@@ -41,6 +61,26 @@
                 "raw": "{\n  \"role\": \"ADMIN_ROLE\"\n}",
                 "form": []
             },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "57a7759e-8b2e-445c-8067-28e10268ed9e",
+            "colId": "90381da4-41f5-4694-a9b3-9d20f208e15a",
+            "containerId": "",
+            "name": "eliminarUsuario",
+            "url": "http://localhost:3000/gestion/v2/usuarios/65ea86cc927a24b5678fbf92",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T03:25:21.601Z",
+            "modified": "2024-03-08T03:33:13.124Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhODJlZGZkMTRlODU1ZjI0NzFmMmEiLCJpYXQiOjE3MDk4Njg3ODEsImV4cCI6MTcwOTg3MjM4MX0.FQLAQ1KrFV_UaL4m6FQteRj6vLExtIjpa8yonrg4Kuk"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
