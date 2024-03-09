@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "factura Collection",
-    "dateExported": "2024-03-08T05:23:47.151Z",
+    "dateExported": "2024-03-09T01:32:13.947Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,14 +14,15 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-03-08T03:57:45.622Z",
-            "modified": "2024-03-08T04:50:52.737Z",
+            "modified": "2024-03-09T01:31:12.168Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n  \"usuario\": \"65ea832cfd14e855f2471f2f\",\r\n  \"productos\": [\r\n    {\r\n      \"producto\": \"65ea98e8cdc1d9de29f7c315\",\r\n      \"cantidad\": 1\r\n    },\r\n    {\r\n      \"producto\": \"65ea9902cdc1d9de29f7c318\",\r\n      \"cantidad\": 8\r\n    }\r\n  ],\r\n  \"total\": 100\r\n}",
+                "raw": "{\n  \"usuario\": \"ID de un usuario\",\n  \"productos\": [\n    {\n      \"producto\": \"Id de un producto\",\n      \"cantidad\": 7\n    },\n    {\n      \"producto\": \"Id de un producto\",\n      \"cantidad\": 2\n    },\n    {\n      \"producto\": \"Id de un producto\",\n      \"cantidad\": 6\n    }\n  ],\n  \"total\": 100\n}",
                 "form": []
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -44,17 +45,32 @@
             "tests": []
         },
         {
+            "_id": "be923f9b-e119-495b-8125-b9d7171dab24",
+            "colId": "5ea9e80e-18c9-4e36-aca0-5dbb8f0d8345",
+            "containerId": "",
+            "name": "eliminar factura",
+            "url": "http://localhost:3000/gestion/v5/facturas/65ebbacb24d4f5e1e0165dc0/eliminar",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-03-09T01:13:34.033Z",
+            "modified": "2024-03-09T01:28:32.221Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "a10331a1-e871-4080-b9c1-0a4785c3eebc",
             "colId": "5ea9e80e-18c9-4e36-aca0-5dbb8f0d8345",
             "containerId": "",
             "name": "Historial de compra",
-            "url": "http://localhost:3000/gestion/v5/facturas/usuario/65ea832cfd14e855f2471f2f",
+            "url": "http://localhost:3000/gestion/v5/facturas/usuario/65ebb90f24d4f5e1e0165da3",
             "method": "GET",
-            "sortNum": 20000,
+            "sortNum": 50000,
             "created": "2024-03-08T04:47:55.465Z",
-            "modified": "2024-03-08T04:53:57.674Z",
+            "modified": "2024-03-09T01:27:54.242Z",
             "headers": [],
             "params": [],
+            "reqType": "get",
             "tests": []
         }
     ]
